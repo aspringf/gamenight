@@ -59,17 +59,20 @@ server <- function(input, output) {
         output$one <- renderUI({
             tagList(
                 h3("Here's one suggestion:"),
-                tags$a( href=gm_react$all_games_pp[ gm_react$ii[1], "bgg_link" ], 
+                tags$a( href=gm_react$all_games_pp[ gm_react$ii[1], "bgg_link" ],
+                        target = "_blank",
                         tags$img( src = gm_react$all_games_pp[ gm_react$ii[1], "img_link" ],
                                   alt = gm_react$all_games_pp[ gm_react$ii[1], "game" ] ) ),
                 br(),
                 h3("If you don't like that, here's a second:"),
-                tags$a( href=gm_react$all_games_pp[ gm_react$ii[2], "bgg_link" ], 
+                tags$a( href=gm_react$all_games_pp[ gm_react$ii[2], "bgg_link" ],
+                        target = "_blank",
                         tags$img( src = gm_react$all_games_pp[ gm_react$ii[2], "img_link" ],
                                   alt = gm_react$all_games_pp[ gm_react$ii[2], "game" ] ) ),
                 br(),
                 h3("Still not happy? Here's a third:"),
-                tags$a( href=gm_react$all_games_pp[ gm_react$ii[3], "bgg_link" ], 
+                tags$a( href=gm_react$all_games_pp[ gm_react$ii[3], "bgg_link" ],
+                        target = "_blank",
                         tags$img( src = gm_react$all_games_pp[ gm_react$ii[3], "img_link" ],
                                   alt = gm_react$all_games_pp[ gm_react$ii[3], "game" ] ) ),
                 br()
