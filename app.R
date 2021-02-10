@@ -9,9 +9,11 @@
 # library( rsconnect )
 # deployApp( account = "springford" )
 #
+# https://docs.google.com/spreadsheets/d/1lOfM7muOUG7XH5aBhCxtVEN4ZbuqZs0GmZ99S74dEqg/edit?usp=sharing
 ####
 
 library(shiny)
+# library(googlesheets)
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
@@ -35,7 +37,8 @@ ui <- fluidPage(
 # Define server logic required to draw a histogram
 server <- function(input, output) {
     
-    all_games <- read.csv( "all_games.csv" )
+    # all_games <- read.csv( "all_games.csv" )
+    all_games <- read.csv( "https://docs.google.com/spreadsheets/d/e/2PACX-1vTss-XmJLZ9wrgAC16B8e4U86f3SNmMyAEBxn7q_m0Nh7MKmUuJrZ8TNbI2qPgrrsrx--H2Ozs9hiTc/pub?gid=1763014796&single=true&output=csv" )
     # game, min_p, max_p, img_link, bgg_link
     
     gm_react <- reactiveValues()
