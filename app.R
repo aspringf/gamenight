@@ -45,13 +45,16 @@ server <- function(input, output) {
     
     # limit to games with the appropriate number of players
     observe({ gm_react$all_games_pp <- subset( all_games, min_p <= input$nplay & max_p >= input$nplay )
-        output$one <- renderUI( tags$img( src = "https://media.giphy.com/media/s0FsE5TsEF8g8/giphy.gif" ) )
+        output$one <- renderUI( tags$img( src = "https://www.queensu.ca/sites/default/files/assets/fp-slideshow/2018-07/DroneKingston-201806-OntarioHall_800x457.jpg" ) )
     })
     
     observeEvent( input$go, {
         
         if( !input$random ){
-            set.seed( julian( Sys.Date() ) )
+            set.seed( as.integer( floor( 
+                julian( Sys.time(), 
+                        origin = as.POSIXct("1970-01-01", tz = "America/New_York") )
+                ) ) )
         }else{
             set.seed( as.integer(Sys.time()) )
         }
