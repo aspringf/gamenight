@@ -23,8 +23,9 @@ ui <- fluidPage(
             sliderInput( "nplay", "How many are playing?", 
                          min = 1, max = 8, value = 6, step = 1, 
                          round = TRUE, post = " players", ticks = FALSE ),
-            actionButton( "go", "Tell me what to play!" ),
-            checkboxInput( "random", "Randomize result" )
+            dateInput( "datewhen", "When do you want to play?" ),
+            checkboxInput( "random", "Randomize result" ),
+            actionButton( "go", "Tell me what to play!" )
         ),
         mainPanel(
             htmlOutput( "one" )
@@ -51,10 +52,11 @@ server <- function(input, output) {
     observeEvent( input$go, {
         
         if( !input$random ){
-            set.seed( as.integer( floor( 
-                julian( Sys.time(), 
-                        origin = as.POSIXct("1970-01-01", tz = "America/New_York") )
-                ) ) )
+            set.seed( 
+              as.integer( 
+                input$datewhen 
+              ) 
+            )
         }else{
             set.seed( as.integer(Sys.time()) )
         }
